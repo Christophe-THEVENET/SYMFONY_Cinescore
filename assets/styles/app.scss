@@ -1,0 +1,22 @@
+$primary: #212D40;
+$primaryLight: #364156;
+$secondary: #7D4E57;
+$orange: #D66853;
+$black: #11151C;
+$white: #ffffff;
+
+
+@import "~bootstrap/scss/bootstrap";
+
+
+
+body {
+    background-color: rgb(50, 63, 66);
+}
+
+
+h1 {
+    color: $orange;
+}
+
+// the ~ allows you to reference things in node_modules
