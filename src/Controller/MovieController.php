@@ -15,7 +15,6 @@ class MovieController extends AbstractController
 
         // utilise order by avec tableau vide pour tout récup et trier
         $movies = $movieRepository->findBy([], ['id' => 'DESC']);
-        dump($movies);
 
         return $this->render('movie/index.html.twig', [
             'movies' => $movies,

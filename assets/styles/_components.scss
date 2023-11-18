@@ -6,11 +6,32 @@
 
 // films
 
-.movie-block {
-    max-width: 20rem;
-}
 
-.card-title {
-    font-family: $fontTitle;
-}
 
+.card-item {
+    width: 13rem;
+
+    font-family: $fontText;
+    font-size: 0.7rem;
+
+    img {
+        height: 12rem;
+    }
+
+    .movie-block {
+        max-width: 20rem;
+    }
+
+    .card-title {
+        font-family: $fontTitle;
+    }
+
+    .card-body {
+        padding: 0.8rem;
+
+        a {
+            font-size: 0.6rem;
+            padding: 0.2rem 0.5rem;
+        }
+    }
+}

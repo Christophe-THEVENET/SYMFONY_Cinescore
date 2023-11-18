@@ -1,11 +1,17 @@
-<article class='col-md-4 my-2 movie-block'>
-    <div class="card">
+<article class='col-md-4 my-2 card-item'>
+    <div class="card w-100">
+
+        {% if movie.imageName %}
         <img src="{{vich_uploader_asset(movie, 'imageFile')}}" class="card-img-top img-card" alt="affiche du film.">
+        {% else %}
+        <img src="{{asset('build/images/default_movie.jpg') }}" class="card-img-top img-card" alt="affiche du film.">
+        {% endif %}
+
+
         <div class="card-body">
             <h5 class="card-title">{{movie.name|capitalize}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <p class="card-text">{{movie.synopsys|slice(0, 70) }}</p>
+            <a href="#" class="btn btn-primary">Voir plus</a>
         </div>
     </div>
 </article>

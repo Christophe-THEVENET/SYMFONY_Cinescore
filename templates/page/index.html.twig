@@ -27,15 +27,23 @@
                 </div>
                 <div class="col-lg-6">
                     <h1 class="display-5 fw-bold lh-1 mb-3">Critiques de films sans filtre</h1>
-                    <p class="lead">Partagez votre ressenti, éclairez les autres passionnés avec votre critique. Chaque mot que vous
-                    déposez devient un guide pour d'autres explorateurs de films. Rejoignez-nous pour créer un dialogue vibrant et
-                    enrichissant autour de vos expériences cinématographiques!</p>
+                    <p class="lead">Partagez votre ressenti, éclairez les autres passionnés avec votre critique. Chaque
+                        mot que vous
+                        déposez devient un guide pour d'autres explorateurs de films. Rejoignez-nous pour créer un
+                        dialogue vibrant et
+                        enrichissant autour de vos expériences cinématographiques!</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                         <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Voir les films</button>
                         <button type="button" class="btn btn-outline-secondary btn-lg px-4">Connexion</button>
                     </div>
                 </div>
             </div>
+            <h1 class="display-5 fw-bold lh-1 mb-3 mt-5">Derniers films notés</h1>
+            <section class='row d-flex justify-content-center'>
+                {% for movie in movies %}
+                {% include "partials/movie/_movie-card.html.twig" %}
+                {% endfor %}
+            </section>
         </main>
 
     </div>
