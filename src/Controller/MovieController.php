@@ -13,7 +13,7 @@ class MovieController extends AbstractController
     public function index(MovieRepository $movieRepository): Response
     {
 
-        // utilise orderby avec tableau vide pour tout récup et trier
+        // utilise order by avec tableau vide pour tout récup et trier
         $movies = $movieRepository->findBy([], ['id' => 'DESC']);
         dump($movies);
 
