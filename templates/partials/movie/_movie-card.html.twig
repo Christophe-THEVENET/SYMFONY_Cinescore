@@ -9,9 +9,9 @@
 
 
         <div class="card-body">
-            <h5 class="card-title">{{movie.name|capitalize}}</h5>
-            <p class="card-text">{{movie.synopsys|slice(0, 70) }}</p>
-            <a href="#" class="btn btn-primary">Voir plus</a>
+            <h5 class="card-title">{{movie.name|slice(0, 20)|capitalize}}</h5>
+            <p class="card-text">{{movie.synopsys|slice(0, 70)|raw }}</p>
+            <a href="{{ path('app_movie_show', {'id': movie.id}) }}" class="btn btn-primary">Voir plus</a>
         </div>
     </div>
 </article>
