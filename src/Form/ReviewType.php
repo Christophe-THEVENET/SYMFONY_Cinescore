@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Review;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,12 +14,26 @@ class ReviewType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('rate')
-            ->add('review')
-            ->add('approuved')
-            ->add('user')
-            ->add('movie')
-        ;
+            ->add('rate', ChoiceType::class, [
+                'label' => 'Note',
+                'choices' => [
+                    '5' => 5,
+                    '4' => 4,
+                    '3' => 3,
+                    '2' => 2,
+                    '1' => 1,
+                ],
+                'attr' => [
+                    'class' => 'rate'
+                ],
+                'expanded' => true, // choix  a cocher
+                'multiple' => false
+
+            ])
+            ->add('review', TextareaType::class, [
+                'attr' => ['class' => 'form-control'],
+                'label' => 'Critique',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

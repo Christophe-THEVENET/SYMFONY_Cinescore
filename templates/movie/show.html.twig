@@ -9,6 +9,8 @@
 {% endblock %}
 
 {% block body %}
+
+<!--  ********************** show movie ********************* -->
 	<section class='row d-flex justify-content-center'>
 		<div class="container col-xxl-8 px-4 py-5">
 			<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
@@ -29,14 +31,13 @@
 						{{movie.duration|format_datetime('none', 'short', locale='fr')}}
 					</h2>
 					<p class="lead">{{movie.synopsys|raw}}</p>
-
-
 				</div>
 			</div>
 		</div>
 	</section>
 
 
+<!--  ********************** formulaire review ********************* -->
 	<section class="row">
 		{{ include('partials/review/_form.html.twig') }}
 	</section>
