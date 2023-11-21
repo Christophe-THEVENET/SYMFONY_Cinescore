@@ -38,7 +38,6 @@
 
 
 
-
 // *********** show movie **************
 
 .show-movie-title {
@@ -62,4 +61,11 @@
     font-family: $fontText;
     font-size: 0.8rem;
     color: $primaryLight;
+}
+
+
+// *********** login register **************
+
+#inputPassword {
+    margin-bottom: 2rem;
 }
