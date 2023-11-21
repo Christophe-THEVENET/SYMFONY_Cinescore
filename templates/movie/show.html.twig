@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+
+{# {% set relaseDateFormatted = movie.releaseYear|date("Y-m-d") %} #}
+
+
 {% block title %}
 	{{movie.name}}
 {% endblock %}
@@ -16,10 +20,16 @@
 					{% endif %}
 				</div>
 				<div class="col-lg-6">
-					<h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{movie.name}}</h1>
-					{# <h2>{{movie.release_year}}</h2> #}
+					<h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 show-movie-title">{{movie.name}}</h1>
+					<h2 class="show-movie-date">{{movie.releaseYear|format_datetime('medium', 'none', locale='fr')}}</h2>
+					{% for director in movie.directors %}
+						<h2 class="show-movie-director">{{director}}</h2>
+					{% endfor %}
+					<h2 class="show-movie-duration">Durée:
+						{{movie.duration|format_datetime('none', 'short', locale='fr')}}
+					</h2>
 					<p class="lead">{{movie.synopsys|raw}}</p>
-					<p class="lead">{{movie.id}}</p>
+
 
 				</div>
 			</div>

@@ -10,8 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+setlocale(LC_TIME, 'fr_FR.UTF-8');
+
+
 class MovieController extends AbstractController
 {
+
+
     // ****************** tous les films ****************************
     #[Route('/movie', name: 'app_movie')]
     public function index(MovieRepository $movieRepository): Response
@@ -31,10 +36,8 @@ class MovieController extends AbstractController
 
 
 
-
         $review = new Review();
         $form = $this->createForm(ReviewType::class, $review);
-
 
 
 

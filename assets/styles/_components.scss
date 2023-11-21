@@ -35,3 +35,31 @@
         }
     }
 }
+
+
+
+
+// *********** show movie **************
+
+.show-movie-title {
+    font-family: $fontTitle!important;
+    color: $orange!important;
+}
+
+.show-movie-date {
+    font-family: $fontText;
+    font-size: 1rem;
+    color: $primaryLight;
+}
+
+.show-movie-director {
+    font-family: $fontTitle;
+    font-size: 0.8rem;
+    color: $primaryLight;
+}
+
+.show-movie-duration {
+    font-family: $fontText;
+    font-size: 0.8rem;
+    color: $primaryLight;
+}
