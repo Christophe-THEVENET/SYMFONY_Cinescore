@@ -40,7 +40,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('CinéScore');
+            ->setTitle('<a href="http://127.0.0.1:8000"><img src="build/images/cinescore.png" alt="logo cinéscore" /></a>')->setLocales(['fr', 'fr']);
     }
 
     public function configureMenuItems(): iterable
