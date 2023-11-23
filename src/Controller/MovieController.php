@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -38,8 +39,13 @@ class MovieController extends AbstractController
 
     // *************************** voir 1 film *******************************
     #[Route('/movie/{id}', name: 'app_movie_show', methods: ['GET', 'POST'])]
-    public function show(Movie $movie,  Request $request, EntityManagerInterface $em, Security $security, ReviewRepository $reviewRepository, MovieRepository $movieRepository): Response
+    public function show(Movie $movie,  Request $request, EntityManagerInterface $em, Security $security, ReviewRepository $reviewRepository, MovieRepository $movieRepository, SessionInterface $session): Response
     {
+
+
+        // on récup l'url courante et on la stocke en session comme page précédente : previous_url
+        $session->set('previous_url', $request->getUri());
+
 
         // on récup le uer
         $user = $security->getUser();

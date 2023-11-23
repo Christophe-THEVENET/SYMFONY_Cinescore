@@ -47,7 +47,11 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
         // redirige vers page protégé (admin si login depuis admin)
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
+
             // sinon redirige ver acceuil si login depuis acceuil
+            // si on a un param ds la session on redirige vers ce param sinon redig acceuill
+        } else if ($targetPath = $request->getSession()->get('previous_url')) {
+            return new RedirectResponse($targetPath);
         } else {
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
         }
@@ -62,4 +66,3 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
 }
-

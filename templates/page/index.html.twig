@@ -1,51 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvenu sur CinéScore{% endblock %}
+{% block title %}Bienvenu sur CinéScore
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper {
-        margin: 1em auto;
-        max-width: 800px;
-        width: 95%;
-        font: 18px/1.5 sans-serif;
-    }
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
 
-    .example-wrapper code {
-        background: #F5F5F5;
-        padding: 2px 6px;
-    }
-</style>
-<main class='container'>
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+	<main class='container'>
 
-    <div class="example-wrapper">
-        <main>
-            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-                <div class="col-10 col-sm-8 col-lg-6">
-                    <img class='img-banniere' src="{{ asset('build/images/image_banniere_cinescore.jpg') }}"
-                        loading="lazy">
-                </div>
-                <div class="col-lg-6">
-                    <h1 class="display-5 fw-bold lh-1 mb-3">Critiques de films sans filtre</h1>
-                    <p class="lead">Partagez votre ressenti, éclairez les autres passionnés avec votre critique. Chaque
-                        mot que vous
-                        déposez devient un guide pour d'autres explorateurs de films. Rejoignez-nous pour créer un
-                        dialogue vibrant et
-                        enrichissant autour de vos expériences cinématographiques!</p>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Voir les films</button>
-                        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Connexion</button>
-                    </div>
-                </div>
-            </div>
-            <h2 class="display-5 fw-bold lh-1 title">Derniers films notés</h2>
-            <section class='row d-flex justify-content-center'>
-                {% for movie in movies %}
-                {% include "partials/movie/_movie-card.html.twig" %}
-                {% endfor %}
-            </section>
-        </main>
+		<div class="example-wrapper">
+			<main>
+				<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+					<div class="col-10 col-sm-8 col-lg-6">
+						<img class='img-banniere' src="{{ asset('build/images/image_banniere_cinescore.jpg') }}" loading="lazy">
+					</div>
+					<div class="col-lg-6">
+						<h1 class="display-5 fw-bold lh-1 mb-3">Critiques de films sans filtre</h1>
+						<p class="lead">Partagez votre ressenti, éclairez les autres passionnés avec votre critique. Chaque
+							<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+								<a href="{{path('app_movies')}}" type="button" class="btn btn-primary btn-lg px-4 me-md-2">Voir les films</a>
+								{% if not app.user %}
+									<a href="{{path('app_login')}}" type="button" class="btn btn-outline-secondary btn-lg px-4">Connexion</a>
+								{% endif %}
+							</div>
+						</p>
+					</div>
+				</div>
+				<h2 class="display-5 fw-bold lh-1 title">Derniers films notés</h2>
+				<section class='row d-flex justify-content-center'>
+					{% for movie in movies %}
+						{% include "partials/movie/_movie-card.html.twig" %}
+					{% endfor %}
+				</section>
+			</main>
 
-    </div>
-</main>
+		</div>
+	</main>
 {% endblock %}
