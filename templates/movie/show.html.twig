@@ -1,16 +1,11 @@
 {% extends 'base.html.twig' %}
 
-
-{# {% set relaseDateFormatted = movie.releaseYear|date("Y-m-d") %} #}
-
-
 {% block title %}
 	{{movie.name}}
 {% endblock %}
 
 {% block body %}
-
-<!--  ********************** show movie ********************* -->
+	<!--  ********************** show movie ********************* -->
 	<section class='row d-flex justify-content-center'>
 		<div class="container col-xxl-8 px-4 py-5">
 			<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
@@ -36,10 +31,29 @@
 		</div>
 	</section>
 
+	<!--  ********************** formulaire review ********************* -->
+	<h1>Noter ce film</h1>
+	{% if app.user %}
+		<section class="row">
+			{{ include('partials/review/_form.html.twig') }}
+		</section>
+	{% else %}
+		<p>Vous devez être connecté pour pouvoir noter ce film. Rendez-vous sur la page
+			<a href="{{path('app_login')}}">connexion</a>
+		</p>
+	{% endif %}
 
-<!--  ********************** formulaire review ********************* -->
-	<section class="row">
-		{{ include('partials/review/_form.html.twig') }}
-	</section>
 
+	<!--  ********************** reviews list by movie ********************* -->
+
+	{% if reviewsByMovie %}
+		<section class="row">
+			{% for reviewByMovie in reviewsByMovie %}
+				{{ include('partials/review/_reviews.html.twig') }}
+			{% endfor %}
+		</section>
+	{% endif %}
+
+
+    
 {% endblock %}

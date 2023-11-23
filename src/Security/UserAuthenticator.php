@@ -44,8 +44,10 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+        // redirige vers pages protégé (admin si login depuis admin)
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
+            // sinon redirige ver acceuil si login depuis acceuil
         } else {
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
         }
@@ -60,3 +62,4 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
 }
+
