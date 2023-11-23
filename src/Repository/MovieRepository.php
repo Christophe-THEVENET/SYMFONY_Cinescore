@@ -23,21 +23,19 @@ class MovieRepository extends ServiceEntityRepository
 
 
 
+    // -------------------------- get movies by genre --------------------------------------
 
-    //    /**
-    //     * @return Movie[] Returns an array of Movie objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('m')
-    //            ->andWhere('m.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('m.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function findMoviesByGenre($genreId = null): array|null
+    {
+        $queryBuilder = $this->createQueryBuilder('m')
+            ->leftJoin('m.genres', 'g');
+
+        if ($genreId != null) {
+            $queryBuilder->where('g.id = :genreId')
+                ->setParameter('genreId', $genreId);
+        }
+        return $queryBuilder->getQuery()->getResult();
+    }
 
     //    public function findOneBySomeField($value): ?Movie
     //    {

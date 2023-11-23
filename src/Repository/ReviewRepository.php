@@ -21,28 +21,26 @@ class ReviewRepository extends ServiceEntityRepository
         parent::__construct($registry, Review::class);
     }
 
-//    /**
-//     * @return Review[] Returns an array of Review objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Review
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    // note moyenne par film  
+    public function getAverageRateByMovie($movieId): float|null
+    {
+        return $this->createQueryBuilder('r')
+            ->select('AVG(r.rate) as averageRate')
+            ->andWhere('r.movie = :movieId')
+            ->setParameter('movieId', $movieId)
+            ->getQuery()
+            // !!!!!!!! pas de getSingleScalarResult pour obtenir  un seul chiffre
+            ->getSingleScalarResult();
+    }
+
+    //    public function findOneBySomeField($value): ?Review
+    //    {
+    //        return $this->createQueryBuilder('r')
+    //            ->andWhere('r.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

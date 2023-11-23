@@ -45,6 +45,14 @@
     color: $orange!important;
 }
 
+.show-movie-genre {
+    margin-right: 1rem;
+    font-size: 0.8rem;
+    background-color: #7d4e5726;
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+}
+
 .show-movie-date {
     font-family: $fontText;
     font-size: 1rem;
@@ -62,6 +70,12 @@
     font-size: 0.8rem;
     color: $primaryLight;
 }
+
+.rate-text {
+font-size: 0.7rem;
+margin-bottom: 0.3rem;
+}
+
 
 
 // *********** login register **************
