@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}lesfilms a noter{% endblock %}
+
+{% block body %}
+
+	<h1 class="display-5 fw-bold lh-1 mb-5">Les films a noter</h1>
+    
+	<section class='row d-flex justify-content-center w-100'>
+		{% for movie in movies %}
+			{% include "partials/movie/_movie-card.html.twig" %}
+		{% endfor %}
+	</section>
+
+{% endblock %}

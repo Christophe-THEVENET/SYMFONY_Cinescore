@@ -1,0 +1,29 @@
+.header {
+
+
+    align-items: center;
+
+
+    background-color: #d6deeb;
+
+    &__logo {
+        width: 5rem !important;
+        margin-left: 1rem;
+    }
+
+    &__nickname {
+        font-family: $fontTitle;
+        font-size: 1rem;
+        color: $secondary;
+        margin-top: 0.4rem;
+        margin-left: 3rem;
+
+    }
+
+    a {
+        padding: 0.3rem 0.5rem;
+    }
+    svg {
+        padding: 0;
+    }
+}

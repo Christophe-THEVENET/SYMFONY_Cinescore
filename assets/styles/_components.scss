@@ -1,0 +1,85 @@
+// banniere home
+
+.img-banniere {
+    width: 130%;
+}
+
+// films
+
+
+
+.card-item {
+    width: 13rem;
+
+    font-family: $fontText;
+    font-size: 0.7rem;
+
+    img {
+        height: 12rem;
+    }
+
+    .movie-block {
+        max-width: 20rem;
+    }
+
+    .card-title {
+        font-family: $fontTitle;
+    }
+
+    .card-body {
+        padding: 0.8rem;
+
+        a {
+            font-size: 0.6rem;
+            padding: 0.2rem 0.5rem;
+        }
+    }
+}
+
+
+
+// *********** show movie **************
+
+.show-movie-title {
+    font-family: $fontTitle!important;
+    color: $orange!important;
+}
+
+.show-movie-genre {
+    margin-right: 1rem;
+    font-size: 0.8rem;
+    background-color: #7d4e5726;
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+}
+
+.show-movie-date {
+    font-family: $fontText;
+    font-size: 1rem;
+    color: $primaryLight;
+}
+
+.show-movie-director {
+    font-family: $fontTitle;
+    font-size: 0.8rem;
+    color: $primaryLight;
+}
+
+.show-movie-duration {
+    font-family: $fontText;
+    font-size: 0.8rem;
+    color: $primaryLight;
+}
+
+.rate-text {
+font-size: 0.7rem;
+margin-bottom: 0.3rem;
+}
+
+
+
+// *********** login register **************
+
+#inputPassword {
+    margin-bottom: 2rem;
+}

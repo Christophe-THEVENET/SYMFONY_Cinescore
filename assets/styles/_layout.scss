@@ -1,0 +1,20 @@
+body {
+    background-color: #e9ebf0;
+    font-family: $fontText;
+}
+
+main {
+    padding: 2rem;
+}
+
+
+h1,
+h2 {
+    color: $primary;
+    font-family: $fontTitle;
+}
+
+.example-wrapper .title {
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
