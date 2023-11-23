@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-setlocale(LC_TIME, 'fr_FR.UTF-8');
 
 
 class MovieController extends AbstractController
@@ -57,25 +56,26 @@ class MovieController extends AbstractController
             $review->setApprouved(false);
         }
 
-        // sinon on utilise celle qui a été requêtée
+        // note moyenne du film
+        $averageRateByMovie = round($reviewRepository->getAverageRateByMovie($movie));
+
+
+
+
         $form = $this->createForm(ReviewType::class, $review);
-
-
         $form->handleRequest($request);
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($review);
             $em->flush();
         }
 
-
-
-
         return $this->render('movie/show.html.twig', [
             'movie' => $movie,
             'form' => $form,
-            'reviewsByMovie' => $reviewsByMovie
+            'reviewsByMovie' => $reviewsByMovie,
+            'averageRateByMovie' => $averageRateByMovie,
+            'user' => $user,
         ]);
     }
 }

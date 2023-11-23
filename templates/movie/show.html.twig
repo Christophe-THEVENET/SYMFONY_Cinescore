@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-	<!--  ********************** show movie ********************* -->
+	{# ********************** show movie ********************* #}
 	<section class='row d-flex justify-content-center'>
 		<div class="container col-xxl-8 px-4 py-5">
 			<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
@@ -18,12 +18,36 @@
 				</div>
 				<div class="col-lg-6">
 					<h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 show-movie-title">{{movie.name}}</h1>
+
+
+					{# ------------------------- etoiles de notation moyenne du film ------------------------------  #}
+					{% if averageRateByMovie %}
+						<div class="row align-items-center">
+							<div class="rate col-6">
+								{% for i in range(5, 1, -1) %}
+									<input disabled="disabled" type="radio" id="avgstar{{ i }}" name="avgrate" value="{{ i }}" {{ averageRateByMovie == i ? 'checked="checked"' : '' }}/>
+									<label for="avgstar{{ i }}" title="{{ i }} étoiles">{{ i }}
+										étoiles</label>
+								{% endfor %}
+							</div>
+						</div>
+					{% else %}
+						<p class="rate-text">Il n'y a pas encore de note</p>
+					{% endif %}
+					{# --------------------------------------------------------------------------- #}
+
 					<h2 class="show-movie-date">{{movie.releaseYear|format_datetime('medium', 'none', locale='fr')}}</h2>
+
 					{% for director in movie.directors %}
 						<h2 class="show-movie-director">{{director}}</h2>
 					{% endfor %}
+
 					<h2 class="show-movie-duration">Durée:
-						{{movie.duration|format_datetime('none', 'short', locale='fr')}}
+						{% if movie.duration %}
+							{{ movie.duration.format("H") }}h{{ movie.duration.format("i") }}
+						{% else %}
+							N/C
+						{% endif %}
 					</h2>
 					<p class="lead">{{movie.synopsys|raw}}</p>
 				</div>
@@ -31,7 +55,7 @@
 		</div>
 	</section>
 
-	<!--  ********************** formulaire review ********************* -->
+	{# ********************** formulaire review ********************* #}
 	<h1>Noter ce film</h1>
 	{% if app.user %}
 		<section class="row">
@@ -44,8 +68,7 @@
 	{% endif %}
 
 
-	<!--  ********************** reviews list by movie ********************* -->
-
+	{#  ********************** reviews list by movie ********************* #}
 	{% if reviewsByMovie %}
 		<section class="row">
 			{% for reviewByMovie in reviewsByMovie %}
@@ -55,5 +78,4 @@
 	{% endif %}
 
 
-    
 {% endblock %}
