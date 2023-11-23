@@ -4,28 +4,19 @@
 			<h5 class="card-title">{{reviewByMovie.user.nickname}}</h5>
 
 			{# ------- etoiles de notation du film par review ---------------------------- #}
-			<p class="card-text">{{reviewByMovie.rate }}</p>
-
 			{% if reviewByMovie.rate %}
-
 				<div class="row align-items-center">
 					<div class="rate col-6">
 						{% for i in range(5, 1, -1) %}
-<input disabled="disabled" type="radio" id="avgstar{{ i }}-{{reviewByMovie.user.email}}" name="avgrate{{i}}-{{reviewByMovie.user.email}}" value="{{ i }}" {{ reviewByMovie.rate == i ? 'checked="checked"' : '' }}/>
-
-
-<label for="avgstar{{ i }}-{{reviewByMovie.user.email}}" title="{{ i }} étoiles">{{ i }}
-
+							<input disabled="disabled" type="radio" id="avgstar{{ i }}-{{reviewByMovie.user.email}}" name="avgrate{{i}}-{{reviewByMovie.user.email}}" value="{{ i }}" {{ reviewByMovie.rate == i ? 'checked="checked"' : '' }}/>
+							<label for="avgstar{{ i }}-{{reviewByMovie.user.email}}" title="{{ i }} étoiles">{{ i }}
 								étoiles</label>
 						{% endfor %}
-
 					</div>
 				</div>
 			{% else %}
 				Il n'y a pas encore de note
 			{% endif %}
-
-
 			{# ---------------------------------------------------------------------- #}
 
 			<p class="card-text">{{reviewByMovie.review}}</p>

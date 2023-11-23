@@ -18,6 +18,14 @@
 				</div>
 				<div class="col-lg-6">
 					<h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 show-movie-title">{{movie.name}}</h1>
+					<div class="d-flex">
+
+						{% for genre in movie.genres %}
+							<a href="{{ path('app_movies', {'genreId': genre.id})}}">
+								<div class="d-flex show-movie-genre">{{genre}}</div>
+							</a>
+						{% endfor %}
+					</div>
 
 
 					{# ------------------------- etoiles de notation moyenne du film ------------------------------  #}

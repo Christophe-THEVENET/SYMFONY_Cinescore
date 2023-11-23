@@ -21,11 +21,15 @@ class MovieController extends AbstractController
 
 
     // ********************** tous les films ****************************
-    #[Route('/movie', name: 'app_movie')]
-    public function index(MovieRepository $movieRepository): Response
+    #[Route('/movies', name: 'app_movies')]
+    public function index(MovieRepository $movieRepository, Request $request): Response
     {
         // utilise order by avec tableau vide pour tout récup et trier
-        $movies = $movieRepository->findBy([], ['id' => 'DESC']);
+        /*  $movies = $movieRepository->findBy([], ['id' => 'DESC']);  */
+
+        // nouvelle requete avec possibilité de filtrer les films par genre
+        $genreId = $request->get('genreId');
+        $movies = $movieRepository->findMoviesByGenre($genreId);
 
         return $this->render('movie/index.html.twig', [
             'movies' => $movies,
@@ -34,7 +38,7 @@ class MovieController extends AbstractController
 
     // *************************** voir 1 film *******************************
     #[Route('/movie/{id}', name: 'app_movie_show', methods: ['GET', 'POST'])]
-    public function show(Movie $movie,  Request $request, EntityManagerInterface $em, Security $security, ReviewRepository $reviewRepository): Response
+    public function show(Movie $movie,  Request $request, EntityManagerInterface $em, Security $security, ReviewRepository $reviewRepository, MovieRepository $movieRepository): Response
     {
 
         // on récup le uer
