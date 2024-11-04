@@ -37,6 +37,43 @@ class MovieRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
+
+    public function findMoviesWithAverageRating(int $limit = null): array
+    {
+        $qb = $this->createQueryBuilder('m')
+            ->select('m', 'AVG(r.rate) as avgRating')
+            ->leftJoin('m.reviews', 'r')
+            ->groupBy('m.id')
+            ->orderBy('m.id', 'DESC');
+        if ($limit !== null) {
+            $qb->setMaxResults($limit);
+        }
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findMoviesWithCriteria($genreId = null, int $limit = null): array
+    {
+        $qb = $this->createQueryBuilder('m')
+            ->select('m', 'AVG(r.rate) as avgRating')
+            ->leftJoin('m.reviews', 'r')
+            ->leftJoin('m.genres', 'g')
+            ->groupBy('m.id')
+            ->orderBy('m.id', 'DESC');
+
+        if ($genreId !== null) {
+            $qb->where('g.id = :genreId')
+                ->setParameter('genreId', $genreId);
+        }
+
+        if ($limit !== null) {
+            $qb->setMaxResults($limit);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
+
+
     //    public function findOneBySomeField($value): ?Movie
     //    {
     //        return $this->createQueryBuilder('m')

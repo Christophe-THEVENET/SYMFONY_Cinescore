@@ -16,10 +16,11 @@
 						<img src="{{asset('build/images/default_movie.jpg') }}" class="card-img-top img-card" alt="affiche du film.">
 					{% endif %}
 				</div>
+
 				<div class="col-lg-6">
 					<h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 show-movie-title">{{movie.name}}</h1>
-					<div class="d-flex">
 
+					<div class="d-flex">
 						{% for genre in movie.genres %}
 							<a href="{{ path('app_movies', {'genreId': genre.id})}}">
 								<div class="d-flex show-movie-genre">{{genre}}</div>
@@ -44,6 +45,7 @@
 					{% endif %}
 					{# --------------------------------------------------------------------------- #}
 
+
 					<h2 class="show-movie-date">{{movie.releaseYear|format_datetime('medium', 'none', locale='fr')}}</h2>
 
 					{% for director in movie.directors %}
@@ -57,6 +59,8 @@
 							N/C
 						{% endif %}
 					</h2>
+
+                    
 					<p class="lead">{{movie.synopsys|raw}}</p>
 				</div>
 			</div>

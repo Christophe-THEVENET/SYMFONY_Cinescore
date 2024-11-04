@@ -16,7 +16,11 @@ class PageController extends AbstractController
         $webSiteName = 'CinéScore';
         $home_movies_limit = $parameterBagInterface->get('home_movies_limit');
 
-        $movies = $movieRepository->findBy([], ['id' => 'DESC'], $home_movies_limit);
+
+
+
+        $movies = $movieRepository->findMoviesWithCriteria(null, $home_movies_limit);
+
 
         return $this->render('page/index.html.twig', [
             'webSiteName' => $webSiteName,

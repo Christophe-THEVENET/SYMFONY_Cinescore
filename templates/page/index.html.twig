@@ -39,12 +39,13 @@
 				</div>
 				<h2 class="display-5 fw-bold lh-1 title">Derniers films notés</h2>
 				<section class='row d-flex justify-content-center'>
-					{% for movie in movies %}
-						{% include "partials/movie/_movie-card.html.twig" %}
+					{% for result in movies %}
+						{% set movie = result[0] %}
+						{% set avgRating = result.avgRating %}
+						{% include "partials/movie/_movie-card.html.twig" with { 'movie': movie, 'avgRating': avgRating } %}
 					{% endfor %}
-				</section>
-			</main>
+			</section>
+		</main>
 
-		</div>
-	</main>
-{% endblock %}
+	</div>
+</main>{% endblock %}
