@@ -26,11 +26,14 @@ class MovieController extends AbstractController
     public function index(MovieRepository $movieRepository, Request $request): Response
     {
         // utilise order by avec tableau vide pour tout récup et trier
-        /*  $movies = $movieRepository->findBy([], ['id' => 'DESC']);  */
+         /* $movies = $movieRepository->findBy([], ['id' => 'DESC']);   */
 
         // nouvelle requete avec possibilité de filtrer les films par genre
         $genreId = $request->get('genreId');
-        $movies = $movieRepository->findMoviesByGenre($genreId);
+         $movies = $movieRepository->findMoviesWithCriteria($genreId);
+
+
+
 
         return $this->render('movie/index.html.twig', [
             'movies' => $movies,

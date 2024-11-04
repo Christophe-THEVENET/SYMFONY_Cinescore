@@ -14,7 +14,7 @@
     overflow: hidden;
     white-space: nowrap;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 20px;
     color: #ccc;
 }
 
@@ -38,3 +38,4 @@
 .rate.enabled>label:hover~input:checked~label {
     color: #c59b08;
 }
+
